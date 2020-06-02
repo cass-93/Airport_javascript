@@ -1,7 +1,7 @@
 class Airport {
 
-  constructor() {
-    this.capacity = 1;
+  constructor(capacity = 1) {
+    this.capacity = capacity;
     this.landed_planes = [];
   }
   // _check_capacity() {
@@ -14,15 +14,15 @@ class Airport {
   // }
 
   land(plane) {
-    if (this.landed_planes.length === 0) {
+    if (this.landed_planes.length === this.capacity) {
+      throw ('Landing is not possible, airport capacity is full');
+    }
+    else {
       this.landed_planes.push(plane)
       return 'Plane has landed';
-    } 
-    else {
-      throw ('Landing is not possible, airport capacity is full');
-    }  
+    }
   }
-  
+
   take_off(plane) {
     return 'Plane has taken off';
   }

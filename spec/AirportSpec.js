@@ -11,7 +11,7 @@ describe ('Airport', function() {
       expect(airport.land(plane)).toEqual('Plane has landed');
     });
   });
-  
+
   describe ('plane take off', function() {
     it ('plane can take off from airport', function() {
       expect(airport.take_off(plane)).toEqual('Plane has taken off');
@@ -22,6 +22,15 @@ describe ('Airport', function() {
     it ('plane cannot land at full airport', function() {
       airport.land(plane)
       expect(function(){ airport.land(plane); }).toThrow('Landing is not possible, airport capacity is full');
+    });
+  });
+
+  describe ('airport default capacity', function() {
+    airportTwo = new Airport(2)
+    it ('allows plans to land the specified number of times', function() {
+       airportTwo.land(plane)
+       airportTwo.land(plane)
+      expect(function(){ airportTwo.land(plane); }).toThrow('Landing is not possible, airport capacity is full');
     });
   });
 });
